@@ -32,6 +32,10 @@
   overflow: hidden;
   height: 250px;
 }
+
+.dropdown-item:hover {
+  color: black !important;
+}
 .slider-frame .btnn {
   width: 40px;
   height: 100%;
