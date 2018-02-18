@@ -111,10 +111,15 @@ function controls(frameWidth, scollWidth){
 
     prev.on("click", function(){
         var slidercontainer = $(this).next().next(".slider-container");
+        var videoCount = slidercontainer.children().length;
+        var sliderCount = videoCount / showCount;
 
-        if(currentSliderCount<=0){
+        console.log(currentSliderCount)
+        console.log(videoCount)
+        if(currentSliderCount<=showCount){
             prev.display = 'none';
         }else{
+
             prev.display = 'block';
             scollWidth = (scollWidth - frameWidth);
             slidercontainer.animate({
