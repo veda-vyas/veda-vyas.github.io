@@ -1,9 +1,7 @@
 var scaling = 1.50;
 //count
 var showCount = 5;
-var currentSliderCount = 0;
-var videoCount = $(".slider-container").children().length;
-var sliderCount = videoCount / showCount;
+var currentSliderCount = showCount;
 var controlsWidth = 40;
 var scollWidth = 0;
     
@@ -53,7 +51,7 @@ function init(){
     //sliderFrame.css("top", (videoHeightDiff / 2));
     
     sliderContainer.height(videoHeight * scaling);
-    sliderContainer.width((videoWidth * videoCount) + videoWidthDiff);
+    sliderContainer.width((videoWidth * 45) + videoWidthDiff);
     sliderContainer.css("top", (videoHeightDiff / 2));
     sliderContainer.css("margin-left", (controlsWidth));
     
@@ -90,22 +88,25 @@ function controls(frameWidth, scollWidth){
     
     next.on("click", function(){
         var slidercontainer = $(this).next(".slider-container");
+        var videoCount = slidercontainer.children().length;
+        var sliderCount = videoCount / showCount;
 
-        scollWidth = scollWidth + frameWidth;
-        slidercontainer.animate({
-            left: - scollWidth
-        }, 50, function(){ 
-            console.log(currentSliderCount);
-            console.log(scollWidth);
-            console.log(sliderCount);
-            if(currentSliderCount > sliderCount){
-                slidercontainer.css("left", 0);
-                currentSliderCount = 0;
-                scollWidth = 0;
-            }else{
-                currentSliderCount+=showCount;
-            }
-        });        
+        if(currentSliderCount<videoCount-1){
+            scollWidth = scollWidth + frameWidth;
+            slidercontainer.animate({
+                left: - scollWidth
+            }, 50, function(){ 
+                console.log(currentSliderCount);
+                console.log(videoCount);
+                if(currentSliderCount >= videoCount){
+                    slidercontainer.css("left", 0);
+                    currentSliderCount = showCount;
+                    scollWidth = 0;
+                }else{
+                    currentSliderCount+=showCount;
+                }
+            });
+        }
     });
 
     prev.on("click", function(){
@@ -116,12 +117,10 @@ function controls(frameWidth, scollWidth){
         }else{
             prev.display = 'block';
             scollWidth = (scollWidth - frameWidth);
-            console.log(scollWidth)
             slidercontainer.animate({
                 left: - scollWidth
             }, 50, function(){ 
                 currentSliderCount-=showCount;
-                console.log(currentSliderCount)
             });
         }
         slidercontainer.css("left", scollWidth);
