@@ -102,6 +102,11 @@ p.white-text {
 .mask {
   padding: 2%; 
 }
+.middle {
+  display: inline-block;
+  margin-left: 35%;
+  transform: translateX(-50%);
+}
 .tile__details {
   position: absolute;
   bottom: 0;
