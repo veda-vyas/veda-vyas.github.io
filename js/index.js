@@ -179,7 +179,7 @@ function controls(frameWidth, scollWidth, showCount){
         var videoCount = slidercontainer.children().length-1;
         var sliderCount = parseInt(videoCount / showCount);
 
-        if(currentSliderCount<sliderCount){
+        if(currentSliderCount<sliderCount && videoCount!=showCount){
             // scollWidth = scollWidth + frameWidth;
             slidercontainer.animate({
                 left: - frameWidth
