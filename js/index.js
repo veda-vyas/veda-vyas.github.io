@@ -181,11 +181,11 @@ function controls(frameWidth, scollWidth, showCount){
         var videoCount = slidercontainer.children().length;
         var sliderCount = videoCount / showCount;
 
-        if(currentSliderCount<videoCount-1){
+        if(currentSliderCount<videoCount){
             scollWidth = scollWidth + frameWidth;
             slidercontainer.animate({
                 left: - scollWidth
-            }, 150, function(){ 
+            }, 50, function(){ 
                 console.log(currentSliderCount);
                 console.log(videoCount);
                 if(currentSliderCount >= videoCount){
@@ -214,7 +214,7 @@ function controls(frameWidth, scollWidth, showCount){
             scollWidth = (scollWidth - frameWidth);
             slidercontainer.animate({
                 left: - scollWidth
-            }, 150, function(){ 
+            }, 50, function(){ 
                 currentSliderCount-=showCount;
             });
         }
@@ -230,7 +230,7 @@ function controls(frameWidth, scollWidth, showCount){
             scollWidth = scollWidth + frameWidth;
             slidercontainer.animate({
                 left: - scollWidth
-            }, 150, function(){ 
+            }, 50, function(){ 
                 console.log(currentSliderCount);
                 console.log(videoCount);
                 if(currentSliderCount >= videoCount){
@@ -259,7 +259,7 @@ function controls(frameWidth, scollWidth, showCount){
             scollWidth = (scollWidth - frameWidth);
             slidercontainer.animate({
                 left: - scollWidth
-            }, 150, function(){ 
+            }, 50, function(){ 
                 currentSliderCount-=showCount;
             });
         }
