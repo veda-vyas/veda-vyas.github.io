@@ -120,7 +120,7 @@
 }
 
 .emoji--haha:after {
-  content: 'Haha';
+  content: 'Comedy';
 }
 .emoji--haha .emoji__face {
   -webkit-animation: haha-face 2s linear infinite;

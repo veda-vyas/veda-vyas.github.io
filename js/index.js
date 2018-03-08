@@ -19,10 +19,13 @@ function init(showCount){
     var win = $(window);
     var sliderFrame = $(".slider-frame");
     var sliderFrame2 = $(".slider-frame2");
+    var sliderFrames = $(".slider-frames");
     var sliderContainer = $(".slider-container");
     var sliderContainer2 = $(".slider-container2");
+    var sliderContainers = $(".slider-containers");
     var slide = $(".slide");
     var slidee = $(".slidee");
+    var slides = $(".slides");
     
     //counts
     var scollWidth = 0;
@@ -49,6 +52,9 @@ function init(showCount){
     //set sizes
     sliderFrame.width(frameWidth);
     sliderFrame.height(videoHeight * scaling + 28);
+    
+    sliderFrames.width(frameWidth);
+    sliderFrames.height(videoHeight * scaling + 78);
     // sliderFrame.css("margin-left", '50px');
     // sliderFrame.css("margin-right", '90px');
     
@@ -58,10 +64,17 @@ function init(showCount){
     sliderContainer.height(videoHeight * scaling);
     sliderContainer.width((videoWidth * 45) + videoWidthDiff);
     sliderContainer.css("top", (videoHeightDiff / 2));
+    
+    sliderContainers.height(videoHeight * scaling+50);
+    sliderContainers.width((videoWidth * 45) + videoWidthDiff);
+    sliderContainers.css("top", (videoHeightDiff / 2));
     // sliderContainer.css("margin-left", (controlsWidth));
 
     slide.height(videoHeight);
     slide.width(videoWidth);
+    
+    slides.height(videoHeight+50);
+    slides.width(videoWidth);
     
 
     var videoWidth2 = ((windowWidth-400 - controlsWidth * 2) / (showCount+1) );
@@ -160,6 +173,8 @@ function controls(frameWidth, scollWidth, showCount){
     var next = $(".next");
     var prevv = $(".prevv");
     var nextt = $(".nextt");
+    var prevs = $(".prevs");
+    var nexts = $(".nexts");
 
     next.on("click", function(){
         var slidercontainer = $(this).next(".slider-container");
@@ -186,6 +201,51 @@ function controls(frameWidth, scollWidth, showCount){
 
     prev.on("click", function(){
         var slidercontainer = $(this).next().next(".slider-container");
+        var videoCount = slidercontainer.children().length;
+        var sliderCount = videoCount / showCount;
+
+        console.log(currentSliderCount)
+        console.log(videoCount)
+        if(currentSliderCount<=showCount){
+            prev.display = 'none';
+        }else{
+
+            prev.display = 'block';
+            scollWidth = (scollWidth - frameWidth);
+            slidercontainer.animate({
+                left: - scollWidth
+            }, 150, function(){ 
+                currentSliderCount-=showCount;
+            });
+        }
+        slidercontainer.css("left", scollWidth);
+    });
+
+    nexts.on("click", function(){
+        var slidercontainer = $(this).next(".slider-containers");
+        var videoCount = slidercontainer.children().length;
+        var sliderCount = videoCount / showCount;
+
+        if(currentSliderCount<videoCount-1){
+            scollWidth = scollWidth + frameWidth;
+            slidercontainer.animate({
+                left: - scollWidth
+            }, 150, function(){ 
+                console.log(currentSliderCount);
+                console.log(videoCount);
+                if(currentSliderCount >= videoCount){
+                    slidercontainer.css("left", 0);
+                    currentSliderCount = showCount;
+                    scollWidth = 0;
+                }else{
+                    currentSliderCount+=showCount;
+                }
+            });
+        }
+    });
+
+    prevs.on("click", function(){
+        var slidercontainer = $(this).next().next(".slider-containers");
         var videoCount = slidercontainer.children().length;
         var sliderCount = videoCount / showCount;
 
