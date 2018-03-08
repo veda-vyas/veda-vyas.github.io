@@ -1,7 +1,7 @@
 var scaling = 1.50;
 //count
 var showCount = 5;
-var currentSliderCount = showCount;
+var currentSliderCount = 0;
 var controlsWidth = 40;
 var scollWidth = 0;
     
@@ -29,56 +29,54 @@ function init(showCount){
     
     //counts
     var scollWidth = 0;
- 
+    var windowWidth = win.width();
     
     //sizes
-    var windowWidth = win.width();
     var frameWidth = win.width() - 300;
-     if(windowWidth >= 0 && windowWidth <= 414){
+    if(windowWidth >= 0 && windowWidth <= 414){
        showCount = 2;
-   }else if(windowWidth >= 414 &&  windowWidth <= 768){
+    }else if(windowWidth >= 414 &&  windowWidth <= 768){
        showCount = 3;
-   }else{
+    }else{
        showCount = 5;
-   }
-    var videoWidth = ((windowWidth - controlsWidth * 2) / (showCount+1) );
+    }    
+    var videoWidth = ((windowWidth - controlsWidth*2 - showCount*2) / (showCount+1) );
     var videoHeight = Math.round(videoWidth / (16/9));
-    
     var videoWidthDiff = (videoWidth * scaling) - videoWidth;
     var videoHeightDiff = (videoHeight * scaling) - videoHeight;
-    
-  
     
     //set sizes
     sliderFrame.width(frameWidth);
     sliderFrame.height(videoHeight * scaling + 28);
+    sliderContainer.height(videoHeight * scaling);
+    sliderContainer.width((videoWidth * 45) + videoWidthDiff);
+    sliderContainer.css("top", (videoHeightDiff / 2));
+    slide.height(videoHeight);
+    slide.width(videoWidth);
+    
+
+    var videoWidth2 = ((windowWidth-400 - controlsWidth * 2) / (showCount+1) );
+    var videoHeight2 = Math.round(videoWidth2 / (16/9));
+
     
     sliderFrames.width(frameWidth);
     sliderFrames.height(videoHeight * scaling + 78);
     // sliderFrame.css("margin-left", '50px');
     // sliderFrame.css("margin-right", '90px');
     
-    
     //sliderFrame.css("top", (videoHeightDiff / 2));
     
-    sliderContainer.height(videoHeight * scaling);
-    sliderContainer.width((videoWidth * 45) + videoWidthDiff);
-    sliderContainer.css("top", (videoHeightDiff / 2));
     
     sliderContainers.height(videoHeight * scaling+50);
     sliderContainers.width((videoWidth * 45) + videoWidthDiff);
     sliderContainers.css("top", (videoHeightDiff / 2));
     // sliderContainer.css("margin-left", (controlsWidth));
 
-    slide.height(videoHeight);
-    slide.width(videoWidth);
     
     slides.height(videoHeight+50);
     slides.width(videoWidth);
     
 
-    var videoWidth2 = ((windowWidth-400 - controlsWidth * 2) / (showCount+1) );
-    var videoHeight2 = Math.round(videoWidth2 / (16/9));
     
     var videoWidth2Diff = (videoWidth2 * scaling) - videoWidth2;
     var videoHeight2Diff = (videoHeight2 * scaling) - videoHeight2;
@@ -178,92 +176,76 @@ function controls(frameWidth, scollWidth, showCount){
 
     next.on("click", function(){
         var slidercontainer = $(this).next(".slider-container");
-        var videoCount = slidercontainer.children().length;
-        var sliderCount = videoCount / showCount;
+        var videoCount = slidercontainer.children().length-1;
+        var sliderCount = parseInt(videoCount / showCount);
 
-        if(currentSliderCount<videoCount){
-            scollWidth = scollWidth + frameWidth;
+        if(currentSliderCount<sliderCount){
+            // scollWidth = scollWidth + frameWidth;
             slidercontainer.animate({
-                left: - scollWidth
+                left: - frameWidth
             }, 50, function(){ 
-                console.log(currentSliderCount);
-                console.log(videoCount);
-                if(currentSliderCount >= videoCount){
-                    slidercontainer.css("left", 0);
-                    currentSliderCount = showCount;
-                    scollWidth = 0;
-                }else{
-                    currentSliderCount+=showCount;
-                }
+                // if(currentSliderCount >= videoCount){
+                //     slidercontainer.css("left", 0);
+                //     currentSliderCount = showCount;
+                //     scollWidth = 0;
+                // }else{
+                    currentSliderCount+=1;
+                // }
             });
         }
     });
 
     prev.on("click", function(){
         var slidercontainer = $(this).next().next(".slider-container");
-        var videoCount = slidercontainer.children().length;
-        var sliderCount = videoCount / showCount;
-
-        console.log(currentSliderCount)
+        var videoCount = slidercontainer.children().length-1;
+        var sliderCount = parseInt(videoCount / showCount);
         console.log(videoCount)
-        if(currentSliderCount<=showCount){
-            prev.display = 'none';
-        }else{
-
-            prev.display = 'block';
-            scollWidth = (scollWidth - frameWidth);
+        console.log(sliderCount)
+        if(currentSliderCount>0){
+            // scollWidth = (scollWidth - frameWidth);
             slidercontainer.animate({
-                left: - scollWidth
+                left: 0
             }, 50, function(){ 
-                currentSliderCount-=showCount;
+                currentSliderCount-=1;
             });
         }
-        slidercontainer.css("left", scollWidth);
     });
 
     nexts.on("click", function(){
         var slidercontainer = $(this).next(".slider-containers");
-        var videoCount = slidercontainer.children().length;
-        var sliderCount = videoCount / showCount;
+        var videoCount = slidercontainer.children().length-1;
+        var sliderCount = parseInt(videoCount / showCount);
 
-        if(currentSliderCount<videoCount-1){
-            scollWidth = scollWidth + frameWidth;
+        if(currentSliderCount<sliderCount){
+            // scollWidth = scollWidth + frameWidth;
             slidercontainer.animate({
-                left: - scollWidth
+                left: - frameWidth
             }, 50, function(){ 
-                console.log(currentSliderCount);
-                console.log(videoCount);
-                if(currentSliderCount >= videoCount){
-                    slidercontainer.css("left", 0);
-                    currentSliderCount = showCount;
-                    scollWidth = 0;
-                }else{
-                    currentSliderCount+=showCount;
-                }
+                // if(currentSliderCount >= videoCount){
+                //     slidercontainer.css("left", 0);
+                //     currentSliderCount = showCount;
+                //     scollWidth = 0;
+                // }else{
+                    currentSliderCount+=1;
+                // }
             });
         }
     });
 
     prevs.on("click", function(){
         var slidercontainer = $(this).next().next(".slider-containers");
-        var videoCount = slidercontainer.children().length;
-        var sliderCount = videoCount / showCount;
-
-        console.log(currentSliderCount)
+        var videoCount = slidercontainer.children().length-1;
+        var sliderCount = parseInt(videoCount / showCount);
         console.log(videoCount)
-        if(currentSliderCount<=showCount){
-            prev.display = 'none';
-        }else{
-
-            prev.display = 'block';
-            scollWidth = (scollWidth - frameWidth);
+        console.log(sliderCount)
+        if(currentSliderCount>0){
+            // scollWidth = (scollWidth - frameWidth);
             slidercontainer.animate({
-                left: - scollWidth
+                left: 0
             }, 50, function(){ 
-                currentSliderCount-=showCount;
+                currentSliderCount-=1;
             });
         }
-        slidercontainer.css("left", scollWidth);
     });
 
     nextt.on("click", function(){

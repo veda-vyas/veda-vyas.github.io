@@ -117,7 +117,7 @@
   position: relative;
   top: 0;
   transition: width .2s ease, height .2s ease, top .2s ease;
-  padding: 3px;
+  padding: 2px;
 }
 .slider-frame .slider-container .slide:nth-child(even) {
   background-color: transparent;
