@@ -74,7 +74,7 @@ function init(showCount){
 
     
     slides.height(videoHeight+50);
-    slides.width(videoWidth);
+    slides.width(videoWidth-20);
     
 
     
@@ -178,7 +178,9 @@ function controls(frameWidth, scollWidth, showCount){
         var slidercontainer = $(this).next(".slider-container");
         var videoCount = slidercontainer.children().length-1;
         var sliderCount = parseInt(videoCount / showCount);
-
+        console.log(videoCount)
+        console.log(sliderCount)
+        console.log(currentSliderCount)
         if(currentSliderCount<sliderCount && videoCount!=showCount){
             // scollWidth = scollWidth + frameWidth;
             slidercontainer.animate({
