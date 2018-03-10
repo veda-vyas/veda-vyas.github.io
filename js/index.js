@@ -4,7 +4,12 @@ var showCount = 5;
 var currentSliderCount = 0;
 var controlsWidth = 40;
 var scollWidth = 0;
-    
+var prev = $(".prev");  
+var next = $(".next");
+var prevv = $(".prevv");
+var nextt = $(".nextt");
+var prevs = $(".prevs");
+var nexts = $(".nexts");
 
 $(document).ready(function(){
     //$('.slider-container .slide:nth-last-child(-n+4)').prependTo('.slider-container');
@@ -32,7 +37,7 @@ function init(showCount){
     var windowWidth = win.width();
     
     //sizes
-    var frameWidth = win.width() - 300;
+    var frameWidth = win.width() - 440;
     if(windowWidth >= 0 && windowWidth <= 414){
        showCount = 2;
     }else if(windowWidth >= 414 &&  windowWidth <= 768){
@@ -40,7 +45,7 @@ function init(showCount){
     }else{
        showCount = 5;
     }    
-    var videoWidth = ((windowWidth - controlsWidth*2 - showCount*2) / (showCount+1) );
+    var videoWidth = ((windowWidth - controlsWidth*2 - showCount*2) / (showCount+2) );
     var videoHeight = Math.round(videoWidth / (16/9));
     var videoWidthDiff = (videoWidth * scaling) - videoWidth;
     var videoHeightDiff = (videoHeight * scaling) - videoHeight;
@@ -53,46 +58,39 @@ function init(showCount){
     sliderContainer.css("top", (videoHeightDiff / 2));
     slide.height(videoHeight);
     slide.width(videoWidth);
+
+    prev.height(videoHeight-2);
+    next.height(videoHeight-2);
     
+    slides.height(videoHeight+50);
+    slides.width(videoWidth-20);
+    prevs.height(videoHeight-2);
+    nexts.height(videoHeight-2);
 
     var videoWidth2 = ((windowWidth-400 - controlsWidth * 2) / (showCount+1) );
     var videoHeight2 = Math.round(videoWidth2 / (16/9));
-
-    
     sliderFrames.width(frameWidth);
     sliderFrames.height(videoHeight * scaling + 78);
     // sliderFrame.css("margin-left", '50px');
     // sliderFrame.css("margin-right", '90px');
-    
     //sliderFrame.css("top", (videoHeightDiff / 2));
-    
-    
     sliderContainers.height(videoHeight * scaling+50);
     sliderContainers.width((videoWidth * 45) + videoWidthDiff);
     sliderContainers.css("top", (videoHeightDiff / 2));
     // sliderContainer.css("margin-left", (controlsWidth));
-
-    
-    slides.height(videoHeight+50);
-    slides.width(videoWidth-20);
-    
-
-    
     var videoWidth2Diff = (videoWidth2 * scaling) - videoWidth2;
     var videoHeight2Diff = (videoHeight2 * scaling) - videoHeight2;
-    
     //set sizes
     sliderFrame2.width('100%');
     sliderFrame2.height(videoHeight2 * scaling + 28);
-
     sliderContainer2.height(videoHeight2 * scaling);
     sliderContainer2.width((videoWidth2 * 45) + videoWidth2Diff);
     sliderContainer2.css("top", (videoHeight2Diff / 2));
     // sliderContainer2.css("margin-left", (controlsWidth));
-    
     slidee.height(videoHeight2);
     slidee.width(videoWidth2);
-    
+    prevv.height(videoHeight2-2);
+    nextt.height(videoHeight2-2);
     //hover effect
     $(".slide").mouseover(function() {
         $(this).css("width", videoWidth * scaling);
@@ -115,8 +113,8 @@ function init(showCount){
         // }
         
     }).mouseout(function() {
-        $(this).css("width", videoWidth * 1);
-        $(this).css("height", videoHeight * 1);
+        $(this).css("width", videoWidth+2);
+        $(this).css("height", videoHeight+2);
         $(this).css("top", 0);
         $(this).css("z-index", 0);
         // if($(".slide").index($(this)) == 0){
@@ -167,12 +165,6 @@ function init(showCount){
 }
 
 function controls(frameWidth, scollWidth, showCount){
-    var prev = $(".prev");  
-    var next = $(".next");
-    var prevv = $(".prevv");
-    var nextt = $(".nextt");
-    var prevs = $(".prevs");
-    var nexts = $(".nexts");
 
     next.on("click", function(){
         var slidercontainer = $(this).next(".slider-container");

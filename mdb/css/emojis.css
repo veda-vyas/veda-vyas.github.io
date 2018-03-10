@@ -240,7 +240,7 @@
 }
 
 .emoji--wow:after {
-  content: 'Thrillers';
+  content: 'Thriller';
 }
 .emoji--wow .emoji__face {
   -webkit-animation: wow-face 3s linear infinite;

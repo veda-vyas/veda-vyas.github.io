@@ -2,8 +2,8 @@
   html {
     padding: 0;
     margin: 0;
-    background: #141414;
-    color: #e5e5e5;
+    background: url("bg.jpeg");;
+    color: black;
     min-height: 100vh;
     width: 100%;
     font-family: 'Source Sans Pro', sans-serif;
@@ -27,14 +27,15 @@
   }
 
 .auto-cut {
-  width: 250px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  width: 220px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  font-size: 16px;
 }
 .video-container {
   padding-bottom: 0px;
 }
 
 .details-container {
-  color: white;
+  color: black;
   padding-top: 1%;
   padding-bottom: 0px;
   height: 594px;
@@ -84,21 +85,27 @@
   cursor: pointer;
 }
 .slider-frame .btnn.prev {
+  top: 35%;
   left: 0px;
 }
 .slider-frame .btnn.next {
+  top: 35%;
   right: 0px;
 }
 .slider-frame .btnn.prevv {
+  top: 35%;
   left: 0px;
 }
 .slider-frame .btnn.nextt {
+  top: 35%;
   right: 0px;
 }
 .slider-frames .btnn.prevs {
+  top: 35%;
   left: 0px;
 }
 .slider-frames .btnn.nexts {
+  top: 35%;
   right: 0px;
 }
 .slider-frame .slider-container {
@@ -181,10 +188,50 @@ p.white-text {
 .mask {
   padding: 4%; 
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #999!important;
+    opacity: 1; /* Firefox */
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #999!important;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #999!important;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+select {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  padding: 6%;
+}
+
+select.focus {
+  border: none;
+}
+
+select option {
+  color: black;
+  padding: 6%;
+}
+
 .middle {
   display: inline-block;
-  margin-left: 35%;
+  margin-left: 44%;
   transform: translateX(-50%);
+}
+.btn-light-blue {
+  background-color: #dee2e6!important;
 }
 .tile__details {
   position: absolute;
@@ -274,6 +321,13 @@ p.white-text {
   right: auto;
   display: none;
   /*padding-right: 160px;*/
+}
+
+.fa-angle-left {
+  color: white;
+}
+.fa-angle-right {
+  color: white;
 }
 
 
