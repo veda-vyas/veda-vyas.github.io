@@ -220,9 +220,9 @@ select.focus {
   border: none;
 }
 
-select option {
+option {
   color: black;
-  padding: 6%;
+  padding: 20px !important;
 }
 
 .middle {
