@@ -2,7 +2,8 @@ body {
 	height: 100%;
     font-size: 16px;
     /*background: url("/static/bg.jpeg");*/
-    background-color: #83BAAD;
+    /*background-color: #83BAAD;*/
+	background-color: black;
 }
 
 .background-yellow {
