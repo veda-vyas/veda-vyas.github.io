@@ -34,11 +34,17 @@
         <ul class="navbar-nav ml-auto mt-lg-0 pull-right">
             <li class="nav-item dropdown">
 <!--                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGES</a> -->
-                <select> 
+<!--                 <select> 
                     <option value="Telugu" selected>Telugu</option>  
                     <option value="Hindi">Hindi</option> 
                     <option value="English">English</option> 
-                </select>  
+                </select> -->
+                <select class="mdb-select">
+					<option value="" disabled>Language</option>
+					<option value="telugu" selected>Telugu</option>
+					<option value="hindi">Hindi</option>
+					<option value="english">English</option>
+				</select>  
              </li>
             <!-- <li class="nav-item">
                 <a class="nav-link" href="#">WATCHLIST</a>
@@ -84,7 +90,7 @@
       </div>
     </div>  
   </div>
-  <div style="margin-left:230px; margin-right:230px">
+  <div style="margin-left:260px; margin-right:230px;">
     <div class="slider-frames">
       <!-- <div class="btnn prevs text-center">
         <br>
@@ -452,13 +458,52 @@
       </div>
     </div>
   </div>
-  <br><br>
+  <footer class="page-footer font-small pt-4 mt-4">
+    <div class="container-fluid text-center text-md-left">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-uppercase">Contact Us</h5>
+                <p>(+91) 8686093417</p>
+                <p>shortuploads@gmail.com</p>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-uppercase">Index</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Authenticton</a>
+                    </li>
+                    <li>
+                        <a href="#!">Gallery Page</a>
+                    </li>
+                    <li>
+                        <a href="#!">Watch Page</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-copyright py-3 text-center">
+        © 2018 Copyright:
+        <a href="http://localhost:8000/gallery.html"> ShortUploads </a>
+    </div>
+
+	</footer>
   <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
   <script  src="js/index.js"></script>
   <script type="text/javascript" src="mdb/js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="mdb/js/popper.min.js"></script>
   <script type="text/javascript" src="mdb/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="mdb/js/mdb.min.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function() {
+		$('.mdb-select').material_select();
+	});
+
+	// $('#update').on('click', function() {
+	// 	$('.select-dropdown li:eq( 2 )').trigger('click');
+	// });
+  </script>
 </body>
 
 </html>
